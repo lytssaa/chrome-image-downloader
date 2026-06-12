@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>图片测试页 - Image Downloader Test</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 900px; margin: 0 auto; }
+    h1 { border-bottom: 2px solid #e5e7eb; padding-bottom: 8px; }
+    .section { margin: 24px 0; }
+    .section h2 { font-size: 16px; color: #374151; margin-bottom: 10px; }
+    .grid { display: flex; flex-wrap: wrap; gap: 12px; }
+    .grid img, .grid .box { width: 200px; height: 150px; object-fit: cover; border-radius: 6px; border: 1px solid #d1d5db; }
+    .box { display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold; font-size: 14px; }
+    pre { background: #f3f4f6; padding: 8px 12px; border-radius: 4px; font-size: 12px; }
+    .info { font-size: 13px; color: #6b7280; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <h1>🖼️ 图片下载器 · 测试页面</h1>
+  <p class="info">此页面包含多种格式和尺寸的图片，用于测试扩展的提取和下载功能。</p>
+
+  <div class="section">
+    <h2>📷 &lt;img&gt; 标签图片（JPEG）</h2>
+    <div class="grid">
+      <img src="https://picsum.photos/seed/a/400/300" alt="Random image A">
+      <img src="https://picsum.photos/seed/b/400/300" alt="Random image B">
+      <img src="https://picsum.photos/seed/c/400/300" alt="Random image C">
+      <img src="https://picsum.photos/seed/d/400/300" alt="Random image D">
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🎨 PNG 图片</h2>
+    <div class="grid">
+      <img src="https://picsum.photos/seed/e/300/300" alt="Square image E">
+      <img src="https://picsum.photos/seed/f/300/300" alt="Square image F">
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📐 不同尺寸</h2>
+    <div class="grid">
+      <img src="https://picsum.photos/seed/g/800/200" width="800" height="200" alt="Wide image G">
+      <img src="https://picsum.photos/seed/h/200/400" width="200" height="400" alt="Tall image H">
+      <img src="https://picsum.photos/seed/i/100/100" width="100" height="100" alt="Small image I">
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🎭 CSS background-image</h2>
+    <div class="grid">
+      <div class="box" style="background: linear-gradient(135deg, #667eea, #764ba2);">渐变 · 无图</div>
+      <div class="box" style="background-image: url('https://picsum.photos/seed/j/400/300'); background-size: cover;">
+        bg-img J
+      </div>
+      <div class="box" style="background-image: url('https://picsum.photos/seed/k/400/300'); background-size: cover;">
+        bg-img K
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🔍 重复图片（应被去重）</h2>
+    <div class="grid">
+      <img src="https://picsum.photos/seed/a/400/300" alt="Duplicate of A">
+      <img src="https://picsum.photos/seed/b/400/300" alt="Duplicate of B">
+    </div>
+    <p style="font-size:12px;color:#9ca3af;">↑ 这两张与上面第一组重复，扩展应去重只显示一次</p>
+  </div>
+
+  <div class="section">
+    <h2>⚙️ 手动测试说明</h2>
+    <pre>
+1. 打开 chrome://extensions，开启"开发者模式"
+2. 点击"加载已解压的扩展程序"，选择 chrome-image-downloader/ 目录
+3. 回到本页面，点击扩展图标
+4. 预期：弹出面板显示约 9 张去重后的图片
+5. 可按格式筛选、按最小尺寸筛选
+6. 勾选图片，点击下载</pre>
+  </div>
+</body>
+</html>
