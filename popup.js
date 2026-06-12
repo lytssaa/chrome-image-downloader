@@ -416,20 +416,18 @@
     const img = allImages[idx];
     if (!img) return;
 
-    // 将图片数据存入 session 存储，供预览窗口读取
-    await chrome.storage.session.set({
-      previewData: {
-        images: allImages,
-        index: idx
-      }
-    });
+    // 编码图片数据到 URL 参数（比 chrome.storage.session 更可靠）
+    const data = encodeURIComponent(JSON.stringify({
+      images: allImages.slice(0, 100), // 最多传 100 张，避免 URL 太长
+      index: idx
+    }));
 
     // 计算窗口大小（屏幕 85%，但不超过 1200×900）
     const w = Math.min(Math.floor(window.screen.availWidth * 0.85), 1200);
     const h = Math.min(Math.floor(window.screen.availHeight * 0.85), 900);
 
     chrome.windows.create({
-      url: 'preview.html',
+      url: `preview.html?data=${data}`,
       type: 'popup',
       width: w,
       height: h,
